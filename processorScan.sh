@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# (C) Feike Donia 2024, BSD-clause-2
+# Copyright 2024 Feike Donia
 # Processor scanner
 
 #Check if run as root
