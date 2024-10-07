@@ -12,16 +12,20 @@ fi
 
 notFount="" 
 
-if ! which vim &> /dev/null; then   # if curl does not exist, add curl to the notFount variable
-  notFount+="vim "
-fi 
+if ! which dmidecode &> /dev/null; then   # if curl does not exist, add curl to the notFount variable
+  notFount+="dmidecode "
+fi
 
-
-if ! which tofu &> /dev/null; then   # if curl does not exist, add curl to the notFount variable
-  notFount+="tofu "
-fi 
+#Check for a program, foo is a placeholder
+#if ! which foo &> /dev/null; then   # if curl does not exist, add curl to the notFount variable
+#  notFount+="foo "
+#fi 
 
 if [ -n "$notFount" ]; then   # check if notFount is not empty
   echo "Kan benodigde bestand(en) niet vinden: $notFount"
 fi 
 
+#Make a temp dir.
+mkdir -p ~/.tmp/hardwarescan/
+
+sourch processorScan.sh
