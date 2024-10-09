@@ -29,4 +29,7 @@ fi
 #Make a temp dir.
 mkdir -p ~/.tmp/hardwarescan/
 
+#Test to find a bug:
+test=$(pwd)
+echo '$test' 
 source processorScan.sh
