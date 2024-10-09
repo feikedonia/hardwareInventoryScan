@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # Copyright 2024 Feike Donia
 # Hardware Inventory Scan
@@ -28,4 +29,4 @@ fi
 #Make a temp dir.
 mkdir -p ~/.tmp/hardwarescan/
 
-sourch processorScan.sh
+source processorScan.sh
