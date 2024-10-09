@@ -29,4 +29,4 @@ fi
 #Make a temp dir.
 mkdir -p ~/.tmp/hardwarescan/
  
-source processorScan.sh
+source ~/hardwareInventoryScan/processorScan.sh
