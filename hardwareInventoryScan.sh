@@ -35,3 +35,4 @@ fi
 mkdir -p /tmp/hardwareInventoryScan/
 
 #Source the next script
+source ~/hardwareInventoryScan/processorScan.sh
