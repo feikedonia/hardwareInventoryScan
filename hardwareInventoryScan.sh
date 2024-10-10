@@ -32,3 +32,6 @@ if [ -n "$notFound" ]; then
 fi
 	
 #Make temp directory for the outputs to go to
+mkdir -p /tmp/hardwareInventoryScan/
+
+#Source the next script
