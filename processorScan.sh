@@ -11,8 +11,7 @@ if ! which dmidecode &> /dev/null; then
 fi
 
 if [ -n "$notFound" ]; then 
-	echo "Kan benodigde programma's niet vinden: $notFound."
-	echo "Kan script niet draaien $scriptName."
+	echo "Kan $scriptName niet draaien door missende programma's: $notFound."
 	exit 1
 fi
 

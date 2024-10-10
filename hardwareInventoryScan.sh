@@ -1,6 +1,8 @@
 #!/bin/bash
 #copyright 2024 Feike Donia
 
+scriptName="hardwareInventoryScan"
+
 #Check if run as root
 if [ "$(id -u)" != 0 ]; then 
 	echo "Dit script heeft root(admin) rechten nodig om te draaien."
@@ -23,9 +25,8 @@ notFound=""
 #fi
 
 if [ -n "$notFound" ]; then 
-	echo "Kan benodigde programma's niet vinden: $notFound."
+	echo "Kan $scriptName niet draaien door missende programma's: $notFound."
 	exit 1
-fi
 
 #Check language variable
 if [ "$LANG" != "en_US.UTF-8" ]; then
