@@ -27,6 +27,6 @@ if [ -n "$notFount" ]; then   # check if notFount is not empty
 fi 
 
 #Make a temp dir.
-mkdir -p ~/.tmp/hardwarescan/
+mkdir -p /tmp/hardwareScan
  
-source ~/hardwareInventoryScan/processorScan.sh
+source processorScan.sh #use absolute path because $HOME=/root when sudo is used!
