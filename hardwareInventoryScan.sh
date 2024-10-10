@@ -3,7 +3,7 @@
 
 #Check if run as root
 if [ "$(id -u)" != 0 ]; then 
-	echo "Dit script heeft root(admin) rechten nodig om te draaien."4
+	echo "Dit script heeft root(admin) rechten nodig om te draaien."
 	echo "Gelieve dit script te heropenen in root shell:"
 	echo "'su' of 'sudo su'"
 	exit 1
