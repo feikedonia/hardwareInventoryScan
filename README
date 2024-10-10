@@ -2,4 +2,6 @@ Hardware Inventory Scanner
 
 Hardware Inventory Scanner is a set of scripts inside of bash to make it easy to scan computers for their specific hardware. All instructions given by the script are available within (most) linux distributions. The purpos of these script is to be able to automate the process of hardware scanning. 
 
+This script expects the $HOME variable to be /root!
+
 With Regates, Feike Donia
