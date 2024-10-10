@@ -15,12 +15,8 @@ if [ "$HOME" != "/root" ]; then
 	exit 1
 fi
 	
-#Check dependancies
+#Check global dependancies
 notFound=""
-
-if ! which dmidecode &> /dev/null; then
-	notFound+="dmidecode "	#spatie niet vergeten!
-fi
 
 #if ! which foo &> /dev/null; then
 #	notFound+="foo "	#spatie niet vergeten!
@@ -29,6 +25,17 @@ fi
 if [ -n "$notFound" ]; then 
 	echo "Kan benodigde programma's niet vinden: $notFound."
 	exit 1
+fi
+
+#Check language variable
+if [ "$LANG" != "en_US.UTF-8" ]; then
+	echo "De taal is niet ingesteld op Engels (en_US.UTF-8)."
+	read -p "Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
+	echo 
+		if [[ $REPLY =~ ^[Yy]$ ]]; then
+			else
+				exit 1
+		fi
 fi
 	
 #Make temp directory for the outputs to go to
