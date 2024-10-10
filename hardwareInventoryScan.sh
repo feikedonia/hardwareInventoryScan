@@ -30,7 +30,7 @@ if [ -n "$notFound" ]; then
 
 #Check language variable
 if [ "$LANG" != "en_US.UTF-8" ]; then
-	echo "De taal is niet ingesteld op Engels (en_US.UTF-8)."
+	echo "De taal is niet ingesteld op Engels, maar op $LANG."
 	echo "Vraag uw beheerder of dit wenselijk is." 
 	echo "Als u het niet zeker weet, kies nee (N)."
 	read -p "Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
