@@ -32,10 +32,9 @@ if [ "$LANG" != "en_US.UTF-8" ]; then
 	echo "De taal is niet ingesteld op Engels (en_US.UTF-8)."
 	read -p "Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
 	echo 
-		if [[ $REPLY =~ ^[Yy]$ ]]; then
-			else
-				exit 1
-		fi
+	if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
 fi
 	
 #Make temp directory for the outputs to go to
