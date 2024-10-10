@@ -49,4 +49,4 @@ source ~/hardwareInventoryScan/processorScan.sh
 
 #End of the program
 echo "Einde van het programma, er is nog niet verstuurd naar de server."
-exit 
+exit 0
