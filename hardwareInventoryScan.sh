@@ -33,7 +33,7 @@ if [ "$LANG" != "en_US.UTF-8" ]; then
 	read -p "Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
 	echo 
 	if ! [[ $REPLY =~ ^[Yy]$ ]]; then
-		echo "Programma beëindigen…"
+		echo "Programma beëindigen..."
 		exit 1
 	fi
 fi
