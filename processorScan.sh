@@ -8,7 +8,7 @@ echo "$scriptName wordt uitgevoerd..."
 #Check local dependancies
 notFound=""
 
-if ! [ which lscpu &> /dev/null ]; then
+if ! command -v lscpu &> /dev/null; then
 	notFound+="lscpu "	#spatie niet vergeten!
 fi
 
