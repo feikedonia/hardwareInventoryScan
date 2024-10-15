@@ -1,7 +1,12 @@
 #!/bin/bash
 #copyright 2024 Feike Donia
 
+#name and function
 scriptName="hardwareInventoryScan"
+echo "$scriptName wordt uitgevoerd..."
+
+#executing checks
+echo "Alles checken..."
 
 #Check if run as root
 if [ "$(id -u)" != 0 ]; then 
@@ -13,24 +18,13 @@ fi
 
 #Check if run in the correct directory, otherwise change into it
 if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
-	if [ ! -d "$HOME/hardwareInventoryScan" ]; then
+	if ! [ -d "$HOME/hardwareInventoryScan" ]; then
 		echo "Kan de hardwareInventoryScan map niet vinden."
 		exit 1
 	fi
 	cd "$HOME/hardwareInventoryScan"
 fi
 	
-#Check global dependancies
-notFound=""
-
-#if ! which foo &> /dev/null; then
-#	notFound+="foo "	#spatie niet vergeten!
-#fi
-
-if [ -n "$notFound" ]; then 
-	echo "Kan $scriptName niet draaien door missende programma's: $notFound."
-	exit 1
-
 #Check language variable
 if [ "$LANG" != "en_US.UTF-8" ]; then
 	echo "De taal is niet ingesteld op Engels, maar op $LANG."
@@ -47,5 +41,5 @@ fi
 #Make temp directory for the outputs to go to
 mkdir -p /tmp/hardwareInventoryScan/
 
-#Start the next script
-		
+#Start the next script, without preserved variables
+./processorScan.sh
