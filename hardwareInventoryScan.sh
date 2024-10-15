@@ -10,11 +10,14 @@ if [ "$(id -u)" != 0 ]; then
 	echo "'su' of 'sudo su'"
 	exit 1
 fi
-	
-#Check if pwd = /root
-if [ "$HOME" != "/root" ]; then
-	echo "Dit script is heeft een onjuiste \$HOME."
-	exit 1
+
+#Check if run in the correct directory, otherwise change into it
+if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
+	if [ ! -d "$HOME/hardwareInventoryScan" ]; then
+		echo "Kan de hardwareInventoryScan map niet vinden."
+		exit 1
+	fi
+	cd "$HOME/hardwareInventoryScan"
 fi
 	
 #Check global dependancies
@@ -44,9 +47,5 @@ fi
 #Make temp directory for the outputs to go to
 mkdir -p /tmp/hardwareInventoryScan/
 
-#Source the next script
-source ~/hardwareInventoryScan/processorScan.sh
-
-#End of the program
-echo "Einde van het programma, er is nog niet verstuurd naar de server."
-exit 0
+#Start the next script
+		
