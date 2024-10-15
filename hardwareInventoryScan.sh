@@ -39,6 +39,7 @@ if [ "$LANG" != "en_US.UTF-8" ]; then
 fi
 	
 #Make temp directory for the outputs to go to
+echo "Mappen aanmaken..."
 mkdir -p /tmp/hardwareInventoryScan/
 
 #Start the next script, without preserved variables
