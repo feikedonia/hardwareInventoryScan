@@ -44,3 +44,5 @@ mkdir -p /tmp/hardwareInventoryScan/
 
 #Start the next script, without preserved variables
 ./processorScan.sh
+
+./memoryScan.sh
