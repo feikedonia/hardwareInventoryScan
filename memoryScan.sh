@@ -8,6 +8,11 @@ echo "$scriptName wordt uitgevoerd..."
 #Check local dependancies
 notFound=""
 
+if ! command -v jc &> /dev/null; then
+	notFound+="jc "
+	fi
+	
+
 if ! command -v lsmem &> /dev/null; then
 	notFound+="lsmem "	#spatie niet vergeten!
 fi
@@ -25,4 +30,4 @@ fi
 lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
 
 # dmidecode -t memory , tells the speed of the memory
-dmidecode -t memory > /tmp/hardwareInventoryScan/dmidecodeMemory.txt
+dmidecode -t memory | jc --dmidecode -p > /tmp/hardwareInventoryScan/dmidecodeMemory.txt
