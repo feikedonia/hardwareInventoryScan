@@ -8,9 +8,9 @@ echo "$scriptName wordt uitgevoerd..."
 #Check local dependancies
 notFound=""
 
-if ! command -v lsmem &> /dev/null; then
-	notFound+="lsmem "	#spatie niet vergeten!
-fi
+#if ! command -v lsmem &> /dev/null; then
+#	notFound+="lsmem "	#spatie niet vergeten!
+#fi
 
 if ! command -v dmidecode &> /dev/null; then
 	notFound+="dmidecode "
@@ -22,6 +22,6 @@ if [ -n "$notFound" ]; then
 fi
 
 # lsmem
-lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
+#lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
 
-dmidecode > /tmp/hardwareInventoryScan/dmidecode.txt
+dmidecode -t memory > /tmp/hardwareInventoryScan/dmidecodeMemory.txt
