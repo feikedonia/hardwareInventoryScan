@@ -18,5 +18,5 @@ if [ -n "$notFound" ]; then
 fi
 
 #lscpu
-lscpu -J > /tmp/hardwareInventoryScan/lscpu.json #does overwrite, if already exists!
+lscpu -J > /tmp/hardwareScan/lscpu.json #does overwrite, if already exists!
 exit 0
