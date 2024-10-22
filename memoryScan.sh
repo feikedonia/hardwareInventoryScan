@@ -24,3 +24,4 @@ fi
 # lsmem
 lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
 
+dmidecode > /tmp/hardwareInventoryScan/dmidecode.txt
