@@ -30,4 +30,4 @@ fi
 lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
 
 # dmidecode -t memory , tells the speed of the memory
-dmidecode -t memory | jc --dmidecode -p > /tmp/hardwareInventoryScan/dmidecodeMemory.txt
+dmidecode -t memory | jc --dmidecode -p > /tmp/hardwareInventoryScan/dmidecodeMemory.json
