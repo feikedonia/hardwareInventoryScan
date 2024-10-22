@@ -8,9 +8,9 @@ echo "$scriptName wordt uitgevoerd..."
 #Check local dependancies
 notFound=""
 
-#if ! command -v lsmem &> /dev/null; then
-#	notFound+="lsmem "	#spatie niet vergeten!
-#fi
+if ! command -v lsmem &> /dev/null; then
+	notFound+="lsmem "	#spatie niet vergeten!
+fi
 
 if ! command -v dmidecode &> /dev/null; then
 	notFound+="dmidecode "
@@ -21,7 +21,8 @@ if [ -n "$notFound" ]; then
 	exit 1
 fi
 
-# lsmem
-#lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
+# lsmem , tells you quantity of memory, and if removable
+lsmem -J > /tmp/hardwareInventoryScan/lsmem.json
 
+# dmidecode -t memory , tells the speed of the memory
 dmidecode -t memory > /tmp/hardwareInventoryScan/dmidecodeMemory.txt
