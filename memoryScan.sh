@@ -1,5 +1,6 @@
 #!/bin/bash
 #Copyright 2024 Feike Donia
+#GPL-2.0-or-later 
 
 #name and function
 scriptName="memoryScan.sh"
