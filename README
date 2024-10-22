@@ -4,4 +4,10 @@ Hardware Inventory Scanner is a set of scripts inside of bash to make it easy to
 
 This script expects the $HOME variable to be /root!
 
+Dependancy: please install jc for JSON Convertion!
+	> Debian / Ubuntu: apt install jc
+	> Arch: pacman -S jc
+	> Fedora: dnf in jc
+	Documentation for jc: https://blog.kellybrazil.com/2021/04/12/practical-json-at-the-command-line/
+
 With Regates, Feike Donia
