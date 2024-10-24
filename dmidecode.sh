@@ -30,7 +30,10 @@ if ! command -v jc &> /dev/null; then
 fi
 
 #scan the memory
-$1="memory"
-dmidecode -t $1 | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecode_$1.json
+dmidecode -t memory | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeMemory.json
+#scan the bios
+dmidecode -t bios | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBios.json
+
+dmidecode -t baseboard | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBaseboard.json
 
 exit 0
