@@ -47,3 +47,7 @@ mkdir -p /tmp/hardwareScan/
 ./util-linux.sh
 
 ./dmidecode.sh
+
+#Finish
+echo "Uw machine is gescand; de resultaten zijn te vinden in /tmp/hardwareScan."
+exit 0 
