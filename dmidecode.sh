@@ -29,7 +29,13 @@ if ! command -v jc &> /dev/null; then
 	fi
 fi
 
+#scan the memory
 dmidecode -t memory | jc --dmidecode -p > /tmp/hardwareScan/dmidecodeMemory.json
 
-exit 0
+#scan the chassis / the type of device 
+dmidecode -t chassis | jc --dmidecode -p > /tmp/hardwareScan/dmidecodeChassis.json
 
+#scan the baseboard
+dmidecode -t baseboard | jc --dmicecode -p > /tmp/hardwareScan/dmidecodeBaseboard.json
+
+exit 0

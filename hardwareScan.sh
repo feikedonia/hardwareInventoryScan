@@ -13,7 +13,7 @@ echo "Alles checken..."
 if [ "$(id -u)" != 0 ]; then 
 	echo "Dit script heeft root(admin) rechten nodig om te draaien."
 	echo "Gelieve dit script te heropenen in root shell:"
-	echo "'su' of 'sudo su'"
+	echo "'su' of 'sudo ./hardwareScan'."
 	exit 1
 fi
 
@@ -44,6 +44,6 @@ echo "Mappen aanmaken..."
 mkdir -p /tmp/hardwareScan/
 
 #Start the next script, without preserved variables
-./processorScan.sh
+./util-linux.sh
 
-./memoryScan.sh
+./dmidecode.sh
