@@ -29,11 +29,18 @@ if ! command -v jc &> /dev/null; then
 	fi
 fi
 
-#scan the memory
-dmidecode -t memory | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeMemory.json
-#scan the bios
-dmidecode -t bios | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBios.json
+#scan dmidecode bios, system, baseboard, chassis, processor and memory
+dmidecode_range() {
+	for type in {0..6}; do 
+		dmidecode -t "$type" >> /tmp/hardwareScan/dmidecode.txt
+	done
+}
 
-dmidecode -t baseboard | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBaseboard.json
+#scan the memory
+#dmidecode -t memory | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeMemory.json
+#scan the bios
+#dmidecode -t bios | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBios.json
+
+#dmidecode -t baseboard | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBaseboard.json
 
 exit 0
