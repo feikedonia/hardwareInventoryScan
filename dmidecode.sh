@@ -29,12 +29,6 @@ if ! command -v jc &> /dev/null; then
 	fi
 fi
 
-#scan dmidecode bios, system, baseboard, chassis, processor and memory
-dmidecode_range() {
-	for type in {0..6}; do 
-		dmidecode -t "$type" >> /tmp/hardwareScan/dmidecode.txt
-	done
-}
 
 #scan the memory
 #dmidecode -t memory | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeMemory.json
