@@ -1,2 +1,4 @@
 #!/bin/bash
-grep -i hypervisor /proc/cpuinfo
+if [ systemd-detect-virt &> /dev/null ]; then 
+	echo "positive"
+fi	
