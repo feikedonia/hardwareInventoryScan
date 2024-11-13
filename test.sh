@@ -1,4 +1,7 @@
 #!/bin/bash
-if [ systemd-detect-virt &> /dev/null ]; then 
-	echo "positive"
-fi	
+if [ "$(systemd-detect-virt)" != "none" ]; then
+	echo "virtual-machine"
+else
+	echo "no virtual-machine"
+fi
+exit 0
