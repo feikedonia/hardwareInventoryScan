@@ -29,12 +29,15 @@ if ! command -v jc &> /dev/null; then
 	fi
 fi
 
+#Dmidecode
+#loop through types 0 to 4
+for i in {0..4}; do
+	dmidecode -t $i | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecode$i.json
+done
 
-#scan the memory
-#dmidecode -t memory | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeMemory.json
-#scan the bios
-#dmidecode -t bios | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBios.json
-
-#dmidecode -t baseboard | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecodeBaseboard.json
+#loop for types 16 and 17
+for i in {16..17}; do
+	dmidecode -t $i | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecode$i.json
+done
 
 exit 0
