@@ -25,10 +25,26 @@ if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
 	fi
 	cd "$HOME/hardwareInventoryScan"
 fi
-		
+	
 #Make temp directory for the outputs to go to
 echo "Mappen aanmaken..."
 mkdir -p /tmp/hardwareScan/
+
+#Update the system, before running the scans
+echo "Automatisch updaten..."
+if command -v apt &> /dev/null; then
+	echo "Debian / Ubuntu gededecteerd, APT wordt geüpdatet..."
+	apt update && apt upgrade -y
+elif command -v dnf &> /dev/null; then
+	echo "RHEL / CentOS / Fedora gededecteerd, DNF wordt geüpdatet..."
+	dnf check-update && dnf upgrade -y
+elif command -v pacman &> /dev/null; then
+	echo "Arch linux gededecteerd, Pacman wordt geüpdatet..."
+	pacman -Syyu --noconfirm
+else
+	echo "Automatisch updaten mislukt."
+	exit 1
+fi	
 
 #Start the next script, without preserved variables
 ./util-linux.sh
