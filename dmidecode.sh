@@ -18,7 +18,7 @@ if ! command -v jc &> /dev/null; then
 	echo "Automatische installatie wordt geprobeerd..."
 
 	if command -v apt &> /dev/null; then
-		apt update && apt install -y jc
+		apt install -y jc
 	elif command -v dnf &> /dev/null; then
 		dnf in -y jc
 	elif command -v pacman &> /dev/null; then

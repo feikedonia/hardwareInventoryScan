@@ -25,20 +25,7 @@ if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
 	fi
 	cd "$HOME/hardwareInventoryScan"
 fi
-	
-#Check language variable
-#if [ "$LANG" != "en_US.UTF-8" ]; then
-#	echo "De taal is niet ingesteld op Engels, maar op $LANG."
-#	echo "Vraag uw beheerder of dit wenselijk is." 
-#	echo "Als u het niet zeker weet, kies nee (N)."
-#	read -p "Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
-#	echo 
-#	if ! [[ $REPLY =~ ^[Yy]$ ]]; then
-#		echo "Programma beëindigen..."
-#		exit 1
-#	fi
-#fi
-	
+		
 #Make temp directory for the outputs to go to
 echo "Mappen aanmaken..."
 mkdir -p /tmp/hardwareScan/
