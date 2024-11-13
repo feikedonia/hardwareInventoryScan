@@ -3,18 +3,25 @@
 #GPL-2.0-or-later
 
 #name and function
-scriptName="dmidecode.sh"
-echo "$scriptName wordt uitgevoerd..."
-
-#name and function
 scriptName="util-linux.sh"
 echo "$scriptName wordt uitgevoerd..."
 
 #Check dependancies
 if ! command -v lscpu &> /dev/null; then
-	echo "Kan de programma-bundel util-linux niet vinden."
-	exit 1
-fi
+	#try to install
+	echo "De programma-bundel util-linux is niet geïnstalleerd."
+	echo "Automatische installatie wordt geprobeerd..."
+
+	if command -v apt &> /dev/null; then
+			apt update && apt install -y util-linux
+		elif command -v dnf &> /dev/null; then
+			dnf in -y util-linux
+		elif command -v pacman &> /dev/null; then
+			pacman -S --noconfirm util-linux
+		else
+			echo "De automatische installatie is gefaald."
+			exit 1
+		fi
 
 #Check the cpu
 lscpu -J > /tmp/hardwareScan/lscpu.json
