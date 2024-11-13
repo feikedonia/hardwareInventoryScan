@@ -30,8 +30,8 @@ if ! command -v jc &> /dev/null; then
 fi
 
 #Dmidecode
-#loop through types 0 to 4
-for i in {0..4}; do
+#loop through types 0 to 6
+for i in {0..6}; do
 	dmidecode -t $i | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecode$i.json
 done
 
