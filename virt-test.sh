@@ -4,7 +4,7 @@
 
 #name and function
 scriptName="virt-test.sh"
-echo "$scriptName wordt uitgevoerd..."
+echo "-> $scriptName wordt uitgevoerd..."
 
 #get type of virtualization
 virt_type=$(systemd-detect-virt)

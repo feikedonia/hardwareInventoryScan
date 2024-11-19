@@ -4,13 +4,13 @@
 
 #name and function
 scriptName="util-linux.sh"
-echo "$scriptName wordt uitgevoerd..."
+echo "-> $scriptName wordt uitgevoerd..."
 
-#Check dependancies
+echo "   Programma-afhanklijkheden worden gecheckt..."
 if ! command -v lscpu &> /dev/null; then
 	#try to install
-	echo "De programma-bundel util-linux is niet geïnstalleerd."
-	echo "Automatische installatie wordt geprobeerd..."
+	echo "!  De programma-bundel util-linux is niet geïnstalleerd."
+	echo "   Automatische installatie wordt geprobeerd..."
 	if command -v apt &> /dev/null; then
 		apt install -y util-linux
 	elif command -v dnf &> /dev/null; then
@@ -18,25 +18,25 @@ if ! command -v lscpu &> /dev/null; then
 	elif command -v pacman &> /dev/null; then
 		pacman -S --noconfirm util-linux
 	else
-		echo "De automatische installatie is gefaald."
+		echo "!  De automatische installatie is gefaald."
 		exit 1
 	fi
 fi
 
-#Check the system language
+echo "   De systeemtaal wordt gecheckt..."
 if [ "$LANG" != "en_US.UTF-8" ]; then
-	echo "De taal is niet ingesteld op Engels, maar op $LANG."
-	echo "Vraag uw beheerder of dit wenselijk is." 
-	echo "Als u het niet zeker weet, kies nee (N)."
-	read -p "Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
+	echo "!  De taal is niet ingesteld op Engels, maar op $LANG."
+	echo "!  Vraag uw beheerder of dit wenselijk is." 
+	echo "!  Als u het niet zeker weet, kies nee (N)."
+	read -p "-> Wilt u toch doorgaan? (y/N)" -n 1 -r 	#-n 1 check one charactor
 	echo 
 	if ! [[ $REPLY =~ ^[Yy]$ ]]; then
-		echo "Programma beëindigen..."
+		echo "!  Programma beëindigen..."
 		exit 1
 	fi
 fi
 
-#Check the cpu
+#lscpu
 lscpu -J > /tmp/hardwareScan/lscpu.json
 
 #Check the memory

@@ -2,20 +2,19 @@
 #Copyright (C) 2024 Feike Donia
 #GPL-2.0-or-later
 
-#name and function
 scriptName="dmidecode.sh"
-echo "$scriptName wordt uitgevoerd..."
+echo "-> $scriptName wordt uitgevoerd..."
 
-#Check dependancies
+echo "   Programma-afhankelijkheden worden gecheckt..."
 if ! command -v dmidecode &> /dev/null; then
-	echo "Kan het programma dmidecode niet vinden."
+	echo "!  Kan het programma dmidecode niet vinden."
 	exit 1
 fi
 
 if ! command -v jc &> /dev/null; then
 	#try to install 
-	echo "Het programma jc is niet geïnstalleerd."
-	echo "Automatische installatie wordt geprobeerd..."
+	echo "!  Het programma jc is niet geïnstalleerd."
+	echo "   Automatische installatie wordt geprobeerd..."
 
 	if command -v apt &> /dev/null; then
 		apt install -y jc
@@ -24,12 +23,12 @@ if ! command -v jc &> /dev/null; then
 	elif command -v pacman &> /dev/null; then
 		pacman -S --noconfirm jc
 	else
-		echo "De automatische installatie is gefaald."
+		echo "!  De automatische installatie is gefaald."
 		exit 1
 	fi
 fi
 
-#Dmidecode
+#dmidecode
 #loop through types 0 to 4
 for i in {0..4}; do
 	dmidecode -t $i | jc --pritty --dmidecode > /tmp/hardwareScan/dmidecode$i.json
