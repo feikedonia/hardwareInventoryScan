@@ -30,6 +30,22 @@ fi
 echo "Mappen aanmaken..."
 mkdir -p /tmp/hardwareScan/
 
+#Check if updated recently
+echo "Check of het systeem recent in geüpdatet..."
+checkFile="/tmp/hardwareScan/timestamp.txt"
+
+if [ -f "$checkFile" ]; then
+	lastUpdate=$(cat "$checkFile")
+	if [ $lastUpdate < [ $(date +%s) - 259200 ] ]; then
+		#if older then 3 days; then update.sh
+		./update.sh
+	else
+		echo "Systeem is recent geüpdatet."
+	fi
+else
+	echo "Systeem is recent geüpdatet."
+fi
+
 #Update the system, before running the scans
 echo "Automatisch updaten..."
 if command -v apt &> /dev/null; then
