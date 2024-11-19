@@ -2,14 +2,10 @@
 #Copyright (C) 2024 Feike Donia
 #GPL-2.0-or-later
 
-#name and function
 scriptName="hardwareScan.sh"
 echo "$scriptName wordt uitgevoerd..."
 
-#executing checks
-echo "Alles checken..."
-
-#Check if run as root
+echo "Check of script wordt uitgevoerd als root..."
 if [ "$(id -u)" != 0 ]; then 
 	echo "Dit script heeft root(admin) rechten nodig om te draaien."
 	echo "Gelieve dit script te heropenen in root shell:"
@@ -17,7 +13,7 @@ if [ "$(id -u)" != 0 ]; then
 	exit 1
 fi
 
-#Check if run in the correct directory, otherwise change into it
+echo "Check of u in de juiste map staat..."
 if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
 	if ! [ -d "$HOME/hardwareInventoryScan" ]; then
 		echo "Kan de hardwareInventoryScan map niet vinden."
