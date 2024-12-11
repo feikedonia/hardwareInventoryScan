@@ -1,9 +1,9 @@
 #!/bin/bash
-#Copyright (C) 2024 Feike Donia
-#GPL-2.0-or-later
+# Copyright Feike Donia 2024
+# GNU LGPLv3
 
-scriptName="dmidecode.sh"
-echo "-> $scriptName wordt uitgevoerd..."
+script="dmidecode.sh"
+echo "-> $script wordt uitgevoerd..."
 
 echo "   Programma-afhankelijkheden worden gecheckt..."
 if ! command -v dmidecode &> /dev/null; then

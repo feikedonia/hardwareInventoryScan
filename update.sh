@@ -1,10 +1,9 @@
 #!/bin/bash
-#Copyright (C) 2024 Feike Donia
-#GPL-2.0-or-later
+# Copyright Feike Donia 2024
+# GNU LGPLv3
 
-#name and function
-scriptName="update.sh"
-echo "-> $scriptName wordt uitgevoerd..."
+script="update.sh"
+echo "-> $script wordt uitgevoerd..."
 
 #Update the system, before running the scans
 echo "   Automatisch updaten..."
