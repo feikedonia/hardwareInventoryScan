@@ -5,6 +5,17 @@ clear
 scriptName="hardwareScan.sh"
 echo "-> $scriptName wordt uitgevoerd..."
 
+# Voeg functionaliteit toe:
+# 1. Stel vast welke packetmanager in gebruik is, en
+# 2. schrijf het packetmanager naar een globale variabele (hardwareInventory-wijd).
+# 3. Vraag aan de gebruiker of die wilt updaten.
+# Haal functionaliteit weg:
+# 4. Meganisme om te bepalen of het systeem recent is geüpdatet,
+#	 omdat het overbodig is.
+
+
+
+
 echo "   Check of script wordt uitgevoerd als root..."
 if [ "$(id -u)" != 0 ]; then 
 	echo "!  Dit script heeft root(admin) rechten nodig om te draaien."
@@ -27,6 +38,8 @@ echo "   Mappen aanmaken..."
 mkdir -p /tmp/hardwareScan/
 
 #Check if updated recently
+## DEPRECATED ##
+echo "!  DEPRECATED"
 echo "   Check of het systeem recent in geüpdatet..."
 checkFile="/tmp/hardwareScan/timestamp.txt"
 
@@ -43,6 +56,7 @@ else
 fi
 
 #Start the next script, without preserved variables
+## Opeenvolgende scripts moeten worden uitgevoerd met behoud van globale variabelen.
 ./util-linux.sh
 
 ./dmidecode.sh
