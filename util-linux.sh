@@ -1,10 +1,9 @@
 #!/bin/bash
-#Copyright (C) 2024 Feike Donia
-#GPL-2.0-or-later
+# Copyright Feike Donia 2024
+# GNU LGPLv3
 
-#name and function
-scriptName="util-linux.sh"
-echo "-> $scriptName wordt uitgevoerd..."
+script="util-linux.sh"
+echo "-> $script wordt uitgevoerd..."
 
 echo "   Programma-afhanklijkheden worden gecheckt..."
 if ! command -v lscpu &> /dev/null; then
