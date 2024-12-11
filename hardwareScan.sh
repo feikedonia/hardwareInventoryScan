@@ -6,29 +6,8 @@ clear
 script="hardwareInventory.sh"
 echo "-> $script wordt uitgevoerd..."
 
-# Voeg functionaliteit toe:
-# 1. Stel vast welke packetmanager in gebruik is, en
-# 2. schrijf het packetmanager naar een globale variabele (hardwareInventory-wijd).
-# 3. Vraag aan de gebruiker of die wilt updaten.
-# Haal functionaliteit weg:
-# 4. Meganisme om te bepalen of het systeem recent is geüpdatet,
-#	 omdat het overbodig is.
-
-
-
-
-# Voeg functionaliteit toe:
-# 1. Stel vast welke packetmanager in gebruik is, en
-# 2. schrijf het packetmanager naar een globale variabele (hardwareInventory-wijd).
-# 3. Vraag aan de gebruiker of die wilt updaten.
-# Haal functionaliteit weg:
-# 4. Meganisme om te bepalen of het systeem recent is geüpdatet,
-#	 omdat het overbodig is.
-
-
-
-
-echo "   Check of script wordt uitgevoerd als root..."
+# Check of het script als root wordt uitgevoerd.
+echo "   Check of het script als root wordt uitgevoerd..."
 if [ "$(id -u)" != 0 ]; then 
 	echo "!  Dit script heeft root(admin) rechten nodig om te draaien."
 	echo "!  Gelieve dit script te heropenen in root shell:"
@@ -36,6 +15,7 @@ if [ "$(id -u)" != 0 ]; then
 	exit 1
 fi
 
+# Check de uitvoerlocatie
 echo "   Check of u in de juiste map staat..."
 if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
 	if ! [ -d "$HOME/hardwareInventoryScan" ]; then
@@ -45,27 +25,36 @@ if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
 	cd "$HOME/hardwareInventoryScan"
 fi
 	
-#Make temp directory for the outputs to go to
-echo "   Mappen aanmaken..."
+# Voeg functionaliteit toe:
+# 3. Vraag aan de gebruiker of die wilt updaten.
+# Haal functionaliteit weg:
+# 4. Meganisme om te bepalen of het systeem recent is geüpdatet,
+#	 omdat het overbodig is.
+
+# Stel een globale variabele in voor de pakketbeheerder
+echo "   Pakketbeheerder vaststellen voor automatische updates en"
+echo "                            programma-afhankelijkheidsinstallatie."
+
+# Functie om de pakketbeheerder vast te stellen
+packetbeheerder() {
+    if command -v apt &> /dev/null; then
+        pakketbeheerder="apt"
+    elif command -v dnf &> /dev/null; then
+        pakketbeheerder="dnf"
+    elif command -v pacman &> /dev/null; then
+        pakketbeheerder="pacman"
+    else
+        echo "Geen ondersteunde pakketbeheerder gevonden."
+        exit 1  # Stop het script als er geen pakketbeheerder gevonden is
+    fi
+}
+
+#Maak tijdenlijke mappen aan
+echo "   tijdenlijke mappen aanmaken..."
 mkdir -p /tmp/hardwareScan/
 
-#Check if updated recently
-## DEPRECATED ##
-echo "!  DEPRECATED"
-echo "   Check of het systeem recent in geüpdatet..."
-checkFile="/tmp/hardwareScan/timestamp.txt"
 
-if [ -f "$checkFile" ]; then
-	lastUpdate=$(cat "$checkFile")
-	if [ $lastUpdate < [ $(date +%s) - 259200 ] ]; then
-		#if older then 3 days; then update.sh
-		./update.sh
-	else
-		echo "   Systeem is recent geüpdatet."
-	fi
-else
-	echo "   Systeem is recent geüpdatet."
-fi
+
 
 #Start the next script, without preserved variables
 ## Opeenvolgende scripts moeten worden uitgevoerd met behoud van globale variabelen.
