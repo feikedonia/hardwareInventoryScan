@@ -1,9 +1,21 @@
 #!/bin/bash
-#Copyright (C) 2024 Feike Donia
-#GPL-2.0-or-later
+# Copyright Feike Donia 2024
+# GNU LGPLv3
+
 clear
-scriptName="hardwareScan.sh"
-echo "-> $scriptName wordt uitgevoerd..."
+script="hardwareInventory.sh"
+echo "-> $script wordt uitgevoerd..."
+
+# Voeg functionaliteit toe:
+# 1. Stel vast welke packetmanager in gebruik is, en
+# 2. schrijf het packetmanager naar een globale variabele (hardwareInventory-wijd).
+# 3. Vraag aan de gebruiker of die wilt updaten.
+# Haal functionaliteit weg:
+# 4. Meganisme om te bepalen of het systeem recent is geüpdatet,
+#	 omdat het overbodig is.
+
+
+
 
 # Voeg functionaliteit toe:
 # 1. Stel vast welke packetmanager in gebruik is, en
