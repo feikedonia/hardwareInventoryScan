@@ -1,11 +1,23 @@
-Hardware Inventory Scanner
+###Hardware Inventory Scanner
 
-Hardware Inventory Scanner is a set of scripts inside of bash to make it easy to scan computers for their specific hardware. All instructions given by the script are available within (most) linux distributions. The purpos of these script is to be able to automate the process of hardware scanning. 
-
-This script expects the $HOME variable to be /root!
-
->	Documentation for jc: https://blog.kellybrazil.com/2021/04/12/practical-json-at-the-command-line/
-
+Hardware Inventory Scanner is a set of scripts using Linux and GNU toolkits to scan computers' hardware
+    specifics. The primary purpose of this project is to automate scanning of linux computers to know
+    there specs, before selling them. The default bebaviour of the scripts is scanning, and confirting 
+    the stdout to json as much as possible.
+   
+The script expects the usage of one of the following distrubutions:
+    * Arch and derivatives (manjaro may not work)
+    * Fedora and derivatives
+    * Debian testing and sid (stable may not work)
+    * Debian testing and sid derivatives, like ubuntu
+    
+This project shall be avialable on github under an opensource and copyleft licence, which shall enable
+    me to recieve modification from others. If someone wants to distubute my code alongside their
+    (proprietary) code they can use the opencore model.
+    
+With hugh thank you to kellyjonbrazil for the exallent json convirtor JC!
+     https://blog.kellybrazil.com/2021/04/12/practical-json-at-the-command-line/
+     
 Kind regards,
 Feike Donia
 
