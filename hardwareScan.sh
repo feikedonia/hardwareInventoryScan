@@ -4,7 +4,7 @@
 
 clear
 script="hardwareInventory.sh"
-echo "-> $script wordt uitgevoerd..."
+echo "-> Executing $script"
 
 
 # Functie om te controleren of het script als root wordt uitgevoerd
