@@ -3,18 +3,18 @@
 # GNU LGPLv3
 
 script="dmidecode.sh"
-echo "-> $script wordt uitgevoerd..."
+echo "-> Executing $script..."
 
-echo "   Programma-afhankelijkheden worden gecheckt..."
+echo "   Dependency resolution..."
 if ! command -v dmidecode &> /dev/null; then
-	echo "!  Kan het programma dmidecode niet vinden."
+	echo "!  dmidecode was not found. Exiting."
 	exit 1
 fi
 
 if ! command -v jc &> /dev/null; then
 	#try to install 
-	echo "!  Het programma jc is niet geïnstalleerd."
-	echo "   Automatische installatie wordt geprobeerd..."
+	echo "!  jc has not been installed."
+	echo "   Trying automatic installation..."
 
 	if command -v apt &> /dev/null; then
 		apt install -y jc
@@ -23,7 +23,7 @@ if ! command -v jc &> /dev/null; then
 	elif command -v pacman &> /dev/null; then
 		pacman -S --noconfirm jc
 	else
-		echo "!  De automatische installatie is gefaald."
+		echo "!  Automatic installation failed. Exiting."
 		exit 1
 	fi
 fi
