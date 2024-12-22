@@ -3,9 +3,9 @@
 # GNU LGPLv3
 
 script="dmidecode.sh"
-echo "-> Executing $script..."
+echo "-> Executing $script"
 
-echo "   Dependency resolution..."
+echo "   Dependency resolution."
 if ! command -v dmidecode &> /dev/null; then
 	echo "!  dmidecode was not found. Exiting."
 	exit 1
@@ -13,8 +13,8 @@ fi
 
 if ! command -v jc &> /dev/null; then
 	#try to install 
-	echo "!  jc has not been installed."
-	echo "   Trying automatic installation..."
+	echo "!  jc is not installed."
+	echo "   Trying automatic installation."
 
 	if command -v apt &> /dev/null; then
 		apt install -y jc
