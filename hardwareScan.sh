@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright Feike Donia 2024
+# Copyright Feike Donia 2024, 2025
 # GNU LGPLv3
 
 clear
@@ -7,12 +7,10 @@ script="hardwareInventory.sh"
 echo "-> Executing $script"
 
 
-# Function to check executing user is root.
-echo "   Checking script is running as root."
-
-# Funtion to check uid is 0, because root has uid 0.
-if [ "$(id -u)" != 0 ]; then
-	echo "!  $script requires root privilege."
+# Checking if script is run as local user (id 1000)
+echo "   Checking if script is run as local user (id 1000)."
+if [ "$(id -u)" != 1000 ]; then
+	echo "!  $script requires to be run as local user."
 	exit 1
 fi
 
@@ -38,13 +36,11 @@ fi
 
 # Making directories to output the scan data, and store global variables
 echo "   Making directories."
-mkdir -p /tmp/hardwareScan/
-touch /tmp/hardwareScan/.packagemanager.var
-
+mkdir -p ~/scan-results/
 
 # Read global variable, and if empty call packagemanager function
-packagemanager=$(cat /tmp/hardwareScan/.packagemanager.var)
-
+touch ~/scan-results/.packagemanager.var
+packagemanager=$(cat ~/scan-results/.packagemanager.var)
 
 
 # Global variable for package manager.
@@ -64,16 +60,13 @@ elif command -v pacman &> /dev/null; then
 else
 	echo "!  No supported package manager found."
 	echo "!  Proceed without automatic dependancy resolution?"
-	read -p "-> Proceed anyway? (y/N): " -n 1 -r
+	read -p "-> Proceed anyway? (Y/n): " -n 1 -r
 	echo
-	if ! [ $REPLY =~ ^[Yy]$ ]; then
+	if [ $REPLY =~ ^[Nn]$ ]; then
 		echo "!  Exiting."
 	exit 1
 	fi
 fi
-
-
-
 
 
 
@@ -85,6 +78,6 @@ fi
 
 #Finish
 echo ""
-echo "-> The machine has been scanned; the results are at /tmp/hardwareScan."
+echo "-> The machine has been scanned; the results are at ~/scan-results."
 echo ""
 exit 0 

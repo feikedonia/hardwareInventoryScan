@@ -13,30 +13,22 @@ This scanner is intended to work without access to internet, but for
     out how persistent USB-stick work yet.
 
 After and during the scanning with this tool, it will save variables
-    and results to a /tmp/hardwareScan/ folder on the local machine,
+    and results to a ~/scan-results/ folder on the local machine,
     if the folder doesn't exist, it will create one. Once the you
-    can `cat` out the results in the /tmp/hardwareScan/ folder.
+    can `cat` out the results in the ~/scan-results folder.
 
-### Targeted platforms
-    * x86-64 machines
-    * Linux live USB-stick
-    * Systemd is a requirement
+### Planned
+    (-) ask the user if, they want network access (auto-downloading)
+    (-)
 
-
-
-
-The script expects the usage of one of the following distributions:
-    * Arch and derivatives (manjaro may not work)
-    * Fedora and derivatives
-    * Debian testing and sid (stable may not work)
-    * Debian testing and sid derivatives, like ubuntu
     
 This project shall be available on github under an open source and
     copyleft license, which shall enable me to receive modifica-
     tions from others.
     
-With huge thanks to kellyjonbrazil for the excellent json convirtor JC!
-     https://blog.kellybrazil.com/2021/04/12/practical-json-at-the-command-line/
+With huge thanks to kellyjonbrazil for the excellent json converter,
+    JC! https://blog.kellybrazil.com/2021/04/12
+                                /practical-json-at-the-command-line/
      
 Kind regards,
 Feike Donia
