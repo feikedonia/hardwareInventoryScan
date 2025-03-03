@@ -7,67 +7,72 @@ script="hardwareInventory.sh"
 echo "-> Executing $script"
 
 
-# Functie om te controleren of het script als root wordt uitgevoerd
-echo "   Check of het script als root wordt uitgevoerd..."
+# Function to check executing user is root.
+echo "   Checking script is running as root."
 
-# Controleer of de user ID (uid) niet gelijk is aan 0 (root heeft uid 0)
+# Funtion to check uid is 0, because root has uid 0.
 if [ "$(id -u)" != 0 ]; then
-	echo "!  HardwareScan heeft root(admin) rechten nodig."
-	echo "!  Voer het script opnieuw uit met het commando:"
-	echo "!  sudo ./hardwareScan"
+	echo "!  $script requires root privilege."
 	exit 1
 fi
 
 
-# Check de uitvoerlocatie
-echo "   Check of u in de juiste map staat..."
+# Check working directory
+echo "   Checking working direcory."
 
-# Controleer of de huidige werkmap niet de verwachte map is
+# Check working directory matches the expected directory
 if [ "$(pwd)" != "$HOME/hardwareInventoryScan" ]; then
 
     if ! [ -d "$HOME/hardwareInventoryScan" ]; then
-        echo "!  De map hardwareInventoryScan bestaat niet."
+        echo "!  hardwareInventoryScan has not been found. Exiting."
         exit 1
     fi
 
-    # Navigeer naar de juiste map
+    # Navigate to the correct directory
     cd "$HOME/hardwareInventoryScan" || {
-        echo "!  Kan de map hardwareInventoryScan niet openen.";
+        echo "!  Cannot open hardwareInventoryScan. Exiting.";
         exit 1;
     }
 fi
 
 
-# Stel een globale variabele in voor de pakketbeheerder
-echo "   Pakketbeheerder vaststellen voor automatische updates en"
-echo "                            programma-afhankelijkheidsinstallatie."
+# Making directories to output the scan data, and store global variables
+echo "   Making directories."
+mkdir -p /tmp/hardwareScan/
+touch /tmp/hardwareScan/.packagemanager.var
 
-# Functie om de pakketbeheerder vast te stellen
-packetbeheerder=""
+
+# Read global variable, and if empty call packagemanager function
+packagemanager=$(cat /tmp/hardwareScan/.packagemanager.var)
+
+
+
+# Global variable for package manager.
+echo "   Determining package manager for automatic dependency resolution."
+
+packagemanager=""
 
 if command -v apt &> /dev/null; then
-	packetbeheerder="apt"
+	packagemanager="apt"
 
 elif command -v dnf &> /dev/null; then
-	packetbeheerder="dnf"
+	packagemanager="dnf"
 
 elif command -v pacman &> /dev/null; then
-	packetbeheerder="pacman"
+	packagemanager="pacman"
 
 else
-	echo "!  Geen ondersteunde pakketbeheerder gevonden."
-	echo "!  Doorgaan zonder automatische afhankelijkheidsinstallatie?"
-	read -p "-> Wilt u doorgaan? (y/N): " -n 1 -r
+	echo "!  No supported package manager found."
+	echo "!  Proceed without automatic dependancy resolution?"
+	read -p "-> Proceed anyway? (y/N): " -n 1 -r
 	echo
 	if ! [ $REPLY =~ ^[Yy]$ ]; then
-		echo "!  Programma wordt beëindigd."
+		echo "!  Exiting."
 	exit 1
 	fi
 fi
 
-#Maak tijdenlijke mappen aan
-echo "   tijdenlijke mappen aanmaken..."
-mkdir -p /tmp/hardwareScan/
+
 
 
 
@@ -80,6 +85,6 @@ mkdir -p /tmp/hardwareScan/
 
 #Finish
 echo ""
-echo "-> Uw machine is gescand; de resultaten zijn te vinden in /tmp/hardwareScan."
+echo "-> The machine has been scanned; the results are at /tmp/hardwareScan."
 echo ""
 exit 0 

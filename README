@@ -1,24 +1,41 @@
 ###Hardware Inventory Scanner
 
-Hardware Inventory Scanner is a set of scripts using Linux and GNU
-    toolkits to scan computers' hardware specifics. The primary
-    purpose of this project is to automate scanning of linux computers
-    to know there specs, before selling them. The default bebaviour
-    of the scripts is scanning, and confirting the stdout to json as
-    much as possible.
-   
-The script expects the usage of one of the following distrubutions:
+Hardware Inventory Scanner is a set of script using Linux and GNU
+    to scan for the hardware specifics of computers running Linux.
+    The primary purpose of this tool is to automate the scanning of
+    Linux computers from a live USB-stick, this way you can test out
+    if Linux works on the device and know the hardware specs before
+    buying the device, for example.
+
+This scanner is intended to work without access to internet, but for
+    the time being, you need to download it with `git clone` and it
+    won't keep the results on the USB-stick, since I haven't figured
+    out how persistent USB-stick work yet.
+
+After and during the scanning with this tool, it will save variables
+    and results to a /tmp/hardwareScan/ folder on the local machine,
+    if the folder doesn't exist, it will create one. Once the you
+    can `cat` out the results in the /tmp/hardwareScan/ folder.
+
+### Targeted platforms
+    * x86-64 machines
+    * Linux live USB-stick
+    * Systemd is a requirement
+
+
+
+
+The script expects the usage of one of the following distributions:
     * Arch and derivatives (manjaro may not work)
     * Fedora and derivatives
     * Debian testing and sid (stable may not work)
     * Debian testing and sid derivatives, like ubuntu
     
-This project shall be avialable on github under an opensource and
-    copyleft licence, which shall enable me to recieve modification
-    from others. If someone wants to distubute my code alongside their
-    (proprietary) code they can use the opencore model.
+This project shall be available on github under an open source and
+    copyleft license, which shall enable me to receive modifica-
+    tions from others.
     
-With hugh thank you to kellyjonbrazil for the excellent json convirtor JC!
+With huge thanks to kellyjonbrazil for the excellent json convirtor JC!
      https://blog.kellybrazil.com/2021/04/12/practical-json-at-the-command-line/
      
 Kind regards,
