@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright Feike Donia 2024
-# GNU LGPLv3
+# GNU GPLv2
 
 script="util-linux.sh"
 echo "-> $script wordt uitgevoerd..."
