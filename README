@@ -17,14 +17,8 @@ After and during the scanning with this tool, it will save variables
     if the folder doesn't exist, it will create one. Once the you
     can `cat` out the results in the ~/scan-results folder.
 
-### Planned
-    (-) ask the user if, they want network access (auto-downloading)
-    (-)
-
-    
-This project shall be available on github under an open source and
-    copyleft license, which shall enable me to receive modifica-
-    tions from others.
+As of January / March 2025 this repo is not longer maintained! 
+This software will contain bugs!
     
 With huge thanks to kellyjonbrazil for the excellent json converter,
     JC! https://blog.kellybrazil.com/2021/04/12
