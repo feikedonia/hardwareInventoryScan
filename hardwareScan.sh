@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright Feike Donia 2024, 2025
-# GNU LGPLv3
+# GNU GPLv2
 
 clear
 script="hardwareInventory.sh"
