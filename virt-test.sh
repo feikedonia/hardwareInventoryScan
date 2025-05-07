@@ -1,6 +1,6 @@
 #!/bin/bash
 #Copyright (C) 2024 Feike Donia
-#GPL-2.0-or-later
+#GPLv2
 
 #name and function
 scriptName="virt-test.sh"
